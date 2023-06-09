@@ -1,5 +1,3 @@
-## Úkol - Finforce
+## Task: tests
 
-This is repository with simple project.
-
-Please review the code and complete the tasks defined in two branches *tests* and *errors*.
+Create tests that will cover functionality in our mini-framework in file base.rb
