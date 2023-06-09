@@ -1,5 +1,23 @@
-## Úkol - Finforce
+## Task: errors
 
-This is repository with simple project.
+Implement error handling. The framework capable of defining response for at least 404 file not found.
 
-Please review the code and complete the tasks defined in two branches *tests* and *errors*.
+```ruby
+class App < Base
+
+  get "/" do
+    "Hello world"
+  end
+
+  error 404 do
+    "Sorry, file not found!"
+  end
+
+end
+```
+
+After that all request to the application except root ("/") should respond with message defined for 404 error.
+
+### Bonus
+
+Add tests that will cover added functionality.
