@@ -26,7 +26,16 @@ class Base
       output = send(meth)
       [@status, @headers, [output]]
     end
-      
+
+    def respond_to_missing?(method_name, include_private = false)
+      method_name.start_with?('GET_/') || super
+    end
+
+    def method_missing(m, *args, &block)
+      return send("GET_/404") if m.start_with?('GET_/')
+
+      super(m, args, &block)
+    end
   end
   
   class << self
@@ -42,8 +51,11 @@ class Base
     
     def post(path, &block)
       request(:post, path, &block)
-    end  
-    
+    end
+
+    def error(code, &block)
+      request(:get, "/#{code}", &block)
+    end
   end
   
   def self.call(env)

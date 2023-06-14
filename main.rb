@@ -18,6 +18,11 @@ class MainController < Base
     @var = "muni"
     render
   end
+
+  error 404 do
+    @status = 404
+    "<b>Not found</b>"
+  end
     
 end
 
